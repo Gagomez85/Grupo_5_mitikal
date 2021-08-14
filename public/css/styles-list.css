@@ -60,7 +60,8 @@ body{
     height: 35vh;
 }
 
-.description_product a:link{
+.description_product a:link,
+.description_product a:visited{
     text-decoration: none !important;
     color:black;
   }

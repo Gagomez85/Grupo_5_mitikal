@@ -81,9 +81,9 @@
             <!--Articles-->
             <div class="container-main3-all">
                 <div class="container-body">
-                    <% elements = productList.length + 1 %>
+                    <% elements = productList.length %>
                     <%function aleatoria(min, max) {  %>                     
-                    <%       return Math.round(Math.random() * (max - min) + min); %>
+                    <%       return Math.floor(Math.random() * (max - min) + min); %>
                     <% } %>
                     <%for(j=0; j<4; j++){%>
                         <% i = aleatoria(0,elements) %> 

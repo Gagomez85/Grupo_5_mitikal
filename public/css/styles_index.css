@@ -316,10 +316,11 @@ main .container-main3-all .row0{
 
 .container-main3-all .container-body .product .image_product img{
     width: 100%;
-    height: 35vh;
+ /*   height: 35vh;*/
 }
 
-.container-main3-all .container-body .product  .description_product a:link{
+.container-main3-all .container-body .product  .description_product a:link,
+.description_product a:visited{
     text-decoration: none !important;
     color:black;
   }
