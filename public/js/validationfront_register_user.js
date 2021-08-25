@@ -1,18 +1,18 @@
 const form = document.querySelector("#form-create")
 
 // los inputs
-const inputName = form.querySelector('name')
-const inputEmail = form.querySelector('email')
-const inputTel = form.querySelector('tel')
-const inputPassword1 = form.querySelector('password1')
-const inputImage = form.querySelector('image')
+const inputName = form.querySelector('#name')
+const inputEmail = form.querySelector('#email')
+const inputTel = form.querySelector('#tel')
+const inputPassword1 = form.querySelector('#password1')
+const inputImage = form.querySelector('#image')
 
 // los mensajes de error
-const errorName = form.querySelector('.error.name.msg')
-const errorEmail = form.querySelector('.error.email.msg')
-const errorTel = form.querySelector('.error.tel.msg')
-const errorPassword1 = form.querySelector('.error.password1.msg')
-const errorImage = form.querySelector('.error.image.msg')
+const errorName = form.querySelector('.msg-error')
+const errorEmail = form.querySelector('.msg-error')
+const errorTel = form.querySelector('.msg-error')
+const errorPassword1 = form.querySelector('.msg-error')
+const errorImage = form.querySelector('.msg-error')
 
 const inputArray = [
   inputName,
@@ -48,10 +48,14 @@ function validateForm(e) {
   resetErrors()
 
   // name
-  if (!inputName.value) || inputName.value.length < 3) {
+  if (!inputName.value) {
+    errorName.innerHTML = "Ingrese su nombre, por favor !"
+    
+    if (!hasErrors) {
+      inputName.focus()
+    }
+
     hasErrors = true
-    errorName.innerHTML = "Ingrese su nombre, por favor !!
-    inputName.focus()
   }
 
   // Email
