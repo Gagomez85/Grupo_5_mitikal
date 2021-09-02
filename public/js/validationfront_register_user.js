@@ -82,10 +82,6 @@ function validateForm(e) {
 
     hasErrors = true;
   }
-
-  if (hasErrors) {
-    // e.preventDefault();
-  }
 }
 inputArray.forEach((input) => {
   input.addEventListener("blur", (event) => validateForm(event));
