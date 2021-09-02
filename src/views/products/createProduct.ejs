@@ -28,7 +28,7 @@
             <div class="box-create-product">
                 <h1>Crear Producto</h1>
                 <H2>Bienvenido, vamos a cargar un nuevo producto</H2>
-                <form action="/products/createProduct" name="create-product-form" method="POST" enctype="multipart/form-data">
+                <form action="/products/createProduct" id='create-product' name="create-product-form" method="POST" enctype="multipart/form-data">
                     <div class="input-container">
                         <label for="name">Nombre del Producto</label>
                         <input type="text" name="name" id="name" class="<%= (locals.errors && errors.name) ? 'input-error' : '' %>" value="<%= locals.oldValues && oldValues.name %>" />
@@ -37,6 +37,7 @@
                                 <%= errors.name.msg %>
                             </p>
                             <% } %>
+                            <span id='error-name' class='msg-error msg-error-name'></span> 
                     </div>
                     <div class="input-container">
                         <label for="description">Descripción</label>
@@ -46,6 +47,7 @@
                                 <%= errors.description.msg %>
                             </p>
                             <% } %>
+                            <span id='error-description' class='msg-error msg-error-description'></span> 
                     </div>
                     <div class="input-container">
                         <label for="category">Categoria</label>
@@ -55,6 +57,7 @@
                                 <%= errors.category.msg %>
                             </p>
                             <% } %>
+                            <span id='error-category' class='msg-error msg-error-category'></span> 
                     </div>
                     <div class="input-container">
                         <label for="color">Color</label>
@@ -64,6 +67,7 @@
                                 <%= errors.color.msg %>
                             </p>
                             <% } %>
+                            <span id='error-color' class='msg-error msg-error-color'></span> 
                     </div>
                     <div class="input-container">
                         <label for="size">Talle</label>
@@ -73,6 +77,7 @@
                                 <%= errors.size.msg %>
                             </p>
                             <% } %>
+                            <span id='error-size' class='msg-error msg-error-size'></span> 
                     </div>
                     <div class="input-container">
                         <label for="price">Precio</label>
@@ -82,6 +87,7 @@
                                 <%= errors.price.msg %>
                             </p>
                             <% } %>
+                            <span id='error-price' class='msg-error msg-error-price'></span> 
                     </div>
                     <div class="input-container-image">
                         <label for="image">Imagen</label>
@@ -91,6 +97,7 @@
                                 <%= errors.image.msg %>
                             </p>
                             <% } %>
+                            <span id='error-image' class='msg-error msg-error-image'></span> 
                     </div>
 
                     <button class="createproduct" type="submit">Crear Producto</button>
@@ -99,6 +106,7 @@
 
 
         </main>
+        <script src="/js/validationfront_create_product.js" ></script>
 
 </body>
 
