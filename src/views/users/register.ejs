@@ -33,42 +33,36 @@
             <div class="box-register">
                 <h1>CREAR CUENTA</h1>
                 <H2>Comprá más rápido y llevá el control de tus pedidos, ¡en un solo lugar!</H2>
-                <form action="/users/register" name="register-form" method="POST" enctype="multipart/form-data">
+                <form action="/users/register" id="register-form" name="register-form" method="POST" enctype="multipart/form-data">
                     <div class="input-container">
                         <label for="name">NOMBRE</label>
                         <input type="text" name="name" id="name" class="<%= (locals.errors && errors.name) ? 'input-error' : '' %>" value="<%= locals.oldValues && oldValues.name %>" />
-                        <% if (locals.errors && errors.name) { %>
-                            <p class='msg-error'>
-                                <%= errors.name.msg %>
+                        
+                            <p id='error-name' class='msg-error'>
+                               <%=(locals.errors && errors.name) ?  errors.name.msg:'' %>
                             </p>
-                            <% } %>
+                            
                     </div>
                     <div class="input-container">
                         <label for="email">E-Mail</label>
                         <input type="email" name="email" id="email" class="<%= (locals.errors && errors.email) ? 'input-error' : '' %>" value="<%= locals.oldValues && oldValues.email %>" />
-                        <% if (locals.errors && errors.email) { %>
-                            <p class='msg-error'>
-                                <%= errors.email.msg %>
+                      <p id='error-email' class='msg-error'>
+                               <%=(locals.errors && errors.name) ?  errors.name.msg:'' %>
                             </p>
-                            <% } %>
                     </div>
                     <div class="input-container">
                         <label for="tel">TELÉFONO</label>
                         <input type="tel" name="tel" id="tel" class="<%= (locals.errors && errors.tel) ? 'input-error' : '' %>" value="<%= locals.oldValues && oldValues.tel %>" />
-                        <% if (locals.errors && errors.tel) { %>
-                            <p class='msg-error'>
-                                <%= errors.tel.msg %>
+                       <p id='error-tel' class='msg-error'>
+                               <%=(locals.errors && errors.name) ?  errors.name.msg:'' %>
                             </p>
-                            <% } %>
                     </div>
                     <div class="input-container">
                         <label for="password1">Contraseña</label>
                         <input type="password" name="password1" id="password1" class="<%= (locals.errors && errors.password1) ? 'input-error' : '' %>" value="<%= locals.oldValues && oldValues.password1 %>" />
-                        <% if (locals.errors && errors.password1) { %>
-                            <p class='msg-error'>
-                                <%= errors.password1.msg %>
+                     <p id='error-password1' class='msg-error'>
+                               <%=(locals.errors && errors.name) ?  errors.name.msg:'' %>
                             </p>
-                            <% } %>
                     </div>
                     <div class="input-container">
                         <label for="password2">Confirmar Contraseña</label>
@@ -87,11 +81,9 @@
                         </label>
                         <input id="file-upload" name="image" onchange='cambiar()' type="file" style='display: none;'/>
                         
-                        <% if (locals.errors && errors.image) { %>
-                            <p class='msg-error'>
-                                <%= errors.image.msg %>
+                        <p id='error-image' class='msg-error'>
+                               <%=(locals.errors && errors.name) ?  errors.name.msg:'' %>
                             </p>
-                            <% } %>
 
                     </div>
 
@@ -109,7 +101,7 @@
 
 
 
-        <script src="/mitikal/Grupo_5_mitikal/public/js/validationfront_register_user.js"</script>
+        <script src="/js/validationfront_register_user.js" ></script>
 
 </body>
 

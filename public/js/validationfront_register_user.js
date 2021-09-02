@@ -1,114 +1,94 @@
-const form = document.querySelector("#form-create")
+const form = document.querySelector("#register-form");
 
 // los inputs
-const inputName = form.querySelector('#name')
-const inputEmail = form.querySelector('#email')
-const inputTel = form.querySelector('#tel')
-const inputPassword1 = form.querySelector('#password1')
-const inputImage = form.querySelector('#image')
+const inputName = form.querySelector("#name");
+const inputEmail = form.querySelector("#email");
+const inputTel = form.querySelector("#tel");
+const inputPassword1 = form.querySelector("#password1");
+const inputImage = form.querySelector("#file-upload");
 
 // los mensajes de error
-const errorName = form.querySelector('.msg-error')
-const errorEmail = form.querySelector('.msg-error')
-const errorTel = form.querySelector('.msg-error')
-const errorPassword1 = form.querySelector('.msg-error')
-const errorImage = form.querySelector('.msg-error')
+const errorName = form.querySelector("#error-name");
+const errorEmail = form.querySelector("#error-email");
+const errorTel = form.querySelector("#error-tel");
+const errorPassword1 = form.querySelector("#error-password1");
+const errorImage = form.querySelector("#error-image");
 
 const inputArray = [
   inputName,
   inputEmail,
   inputTel,
   inputPassword1,
-  inputImage
-]
+  inputImage,
+];
 
 const msgErrorsArray = [
   errorName,
   errorEmail,
   errorTel,
   errorPassword1,
-  errorImage
-]
+  errorImage,
+];
 
 function isNumeric(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n)
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 // resetea errores
 function resetErrors() {
   msgErrorsArray.forEach((msg) => {
-    msg.innerHTML = ""
-  })
+    msg.innerHTML = "";
+  });
 }
 
 // valida el formulario
 function validateForm(e) {
-  let hasErrors = false
+  let hasErrors = false;
 
-  resetErrors()
+  resetErrors();
 
   // name
   if (!inputName.value) {
-    errorName.innerHTML = "Ingrese su nombre, por favor !"
-    
-    if (!hasErrors) {
-      inputName.focus()
-    }
+    errorName.innerHTML = "Ingrese su nombre, por favor !";
 
-    hasErrors = true
+    hasErrors = true;
   }
 
   // Email
-  if (!inputEmail.value) || inputEmail.value.length < 3) {
-    errorEmail.innerHTML = "Por favor escriba un mail !!!!"
+  if (!inputEmail.value || inputEmail.value.length < 3) {
+    errorEmail.innerHTML = "Por favor escriba un mail !!!!";
 
-    if (!hasErrors) {
-      inputEmail.focus()
-    }
-
-    hasErrors = true
+    hasErrors = true;
   }
 
   // Telefono
-  if (!isNumeric(!inputTel.value) {
-    errorTel.innerHTML = "Por favor ingrese un numero de celular o fijo, gracias"
+  if (!isNumeric(Number(inputTel.value))) {
+    errorTel.innerHTML =
+      "Por favor ingrese un numero de celular o fijo, gracias";
 
-    if (!hasErrors) {
-      inputTel.focus()
-    }
-
-    hasErrors = true
+    hasErrors = true;
   }
 
   // Password1
-  if (!inputPassword1.value) || inputPassword1.value.length > 4){
-    errorPassword1.innerHTML = "Por favor ingrese un password !!!!"
+  if (!inputPassword1.value || inputPassword1.value.length < 4) {
+    errorPassword1.innerHTML = "Por favor ingrese un password !!!!";
 
-    if (!hasErrors) {
-      inputPassword1.focus()
-    }
-
-    hasErrors = true
+    hasErrors = true;
   }
 
   // image
   if (!inputImage.value) {
-    errorImage.innerHTML = "Por favor ingrese una imágen"
+    errorImage.innerHTML = "Por favor ingrese una imágen";
 
-    if (!hasErrors) {
-      inputImage.focus()
-    }
-
-    hasErrors = true
+    hasErrors = true;
   }
 
   if (hasErrors) {
-    e.preventDefault()
+    // e.preventDefault();
   }
 }
+inputArray.forEach((input) => {
+  input.addEventListener("blur", (event) => validateForm(event));
+});
 
-inputArray.forEach(input => {
-  input.addEventListener("blur", validateForm)
-})
-
-form.addEventListener("submit", validateForm)
+form.addEventListener("submit", (event) => validateForm(event));
