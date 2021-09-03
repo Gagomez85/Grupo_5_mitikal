@@ -10,4 +10,7 @@
 10- RamaMaster : proyecto middleware con Json.
 11- Se mejoro a nivel CSS y Validaciones, Sequlize a full.
 12- Ahora reunion en la semana para validar desde Front.
-
+13- Se realizo la validacion Fron End en users y products.
+14-Mejoramos por consejo de Pol las fotos subidas al proyecto.
+15-Creamos el css con boostrap del menu desplegable.
+16- Reunion para mejorar a React para la ultima parte
