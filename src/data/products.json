@@ -108,5 +108,15 @@
     "price": "1200",
     "image": "/img/1630614673151.jpg",
     "id": 13
+  },
+  {
+    "name": "validacion",
+    "description": "validacion1",
+    "category": "validacion producto",
+    "color": "verde",
+    "size": "large",
+    "price": "1200",
+    "image": "/img/1630614938949.jpg",
+    "id": 14
   }
 ]
