@@ -1,17 +1,17 @@
-const { Product } = require('../../database/models')
+const { User } = require('../../database/models')
 
 module.exports = {
-    async listProducts(req, res) {
+    async listUsers(req, res) {
         try {
-            const products = await Product.findAndCountAll()
+            const users = await User.findAndCountAll()
 
             res.status(200).json({
                 meta: {
                     status: "success",
-                    total: products.count
+                    total: users.count
                 },
                 data: {
-                    products: products.rows
+                    users: users.rows
                 }
             })
         } catch(err) {
@@ -27,10 +27,10 @@ module.exports = {
         }
     },
 
-    async detailProduct(req, res) {
-        const product = await Product.findByPk(req.params.id)   
+    async detailUser(req, res) {
+        const user = await User.findByPk(req.params.id)   
         
-        if (!product) {
+        if (!user) {
             res.status(404).json({
                 meta: {
                     status: "not_found",
@@ -44,24 +44,21 @@ module.exports = {
                 status: "success",
             },
             data: {
-                product,
+                user,
             }
         })
     },
 
-    async createProduct(req, res) {
-        const { name, description, category, color, size, price, image, destacados, novedades } = req.body
+    async createUser(req, res) {
+        const { name, email, image, tel, password1, password2 } = req.body
 
-        const product = await Product.create({
+        const user = await User.create({
             name, 
-            description, 
-            category,
-            color,
-            size,
-            price,
+            email, 
             image,
-            destacados,
-            novedades
+            tel,
+            password1,
+            password2
         })
 
         res.status(201).json({
@@ -69,15 +66,15 @@ module.exports = {
                 status: "success",
             },
             data: {
-                product,
+                user,
             }
         })
     },
 
-    async updateProduct(req, res) {
-        const product = await Product.findByPk(req.params.id)
+    async updateUser(req, res) {
+        const user = await User.findByPk(req.params.id)
 
-        if (!product) {
+        if (!user) {
             res.status(404).json({
                 meta: {
                     status: "not_found",
@@ -86,18 +83,15 @@ module.exports = {
             return
         }
 
-        const { name, description, category, color, size, price, image, destacados, novedades } = req.body
+        const {  name, email, image, tel, password1, password2 } = req.body
 
-        const productUpdated = await product.update({
+        const userUpdated = await user.update({
             name, 
-            description, 
-            category,
-            color,
-            size,
-            price,
+            email, 
             image,
-            destacados,
-            novedades
+            tel,
+            password1,
+            password2
         })
 
         res.status(201).json({
@@ -105,15 +99,15 @@ module.exports = {
                 status: "success",
             },
             data: {
-                product: productUpdated,
+                user: userUpdated,
             }
         })
     },
 
-    async destroyProduct(req, res) {
-        const product = await Product.findByPk(req.params.id)
+    async destroyUser(req, res) {
+        const user = await User.findByPk(req.params.id)
 
-        if (!product) {
+        if (!user) {
             res.status(404).json({
                 meta: {
                     status: "not_found",
@@ -122,7 +116,7 @@ module.exports = {
             return
         }
 
-        await product.destroy()
+        await user.destroy()
 
         res.status(200).json({
             meta: {
