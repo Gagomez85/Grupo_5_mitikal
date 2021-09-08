@@ -38,6 +38,8 @@ const msgErrorsArray = [
   errorImage,
 ];
 
+// valida que el numero sea un numero
+
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
