@@ -29,31 +29,36 @@
             <div class="container-main-all">
                 <h1>Productos</h1>
                 <div class="container-body-list">
-                   
-                    <% productList.forEach((Product) => { %>
-                            <div class="product">
-                                <div class="image_product">
-                                    <a href="/products/detailProduct/<%= Product.id%>">
-                                        <% if(!Product.image){ %> 
-                                            <img src="/img/no-product.png" alt="">
-                                        <% } else {%>
-                                            <img src="<%= Product.image %>" alt="">
-                                            <% } %>  
-                                    </a> 
-                                </div>
-                                <div class="description_product">          
+                    <% if(productList == ""){ %> 
+                        
+                    <H1>Ups... No se han encontrado productos</H1>
+
+                    <% } else {%>
+                        <% productList.forEach((Product) => { %>
+                                <div class="product">
+                                    <div class="image_product">
                                         <a href="/products/detailProduct/<%= Product.id%>">
-                                            <h3 class="nombre_del_producto"><%= Product.name%></h3>
-                                            <div class="description_product_hide">
-                                                <h5 class="description_product_"><%= Product.description%></h5>
-                                                <h3 class="price_product">$ <%= Product.price%></h3>
-                                                <a href="*"><i class="fas fa-cart-plus"></i></a>
-                                            </div>
-                                        </a>
+                                            <% if(!Product.image){ %> 
+                                                <img src="/img/no-product.png" alt="">
+                                            <% } else {%>
+                                                <img src="<%= Product.image %>" alt="">
+                                                <% } %>  
+                                        </a> 
+                                    </div>
+                                    <div class="description_product">          
+                                            <a href="/products/detailProduct/<%= Product.id%>">
+                                                <h3 class="nombre_del_producto"><%= Product.name%></h3>
+                                                <div class="description_product_hide">
+                                                    <h5 class="description_product_"><%= Product.description%></h5>
+                                                    <h3 class="price_product">$ <%= Product.price%></h3>
+                                                    <a href="*"><i class="fas fa-cart-plus"></i></a>
+                                                </div>
+                                            </a>
+                                    </div>
+                                    
                                 </div>
-                                
-                            </div>
-                    <% }) %>
+                        <% }) %>
+                    <% }%>
                 </div>
             </div>
 

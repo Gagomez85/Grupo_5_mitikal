@@ -32,7 +32,11 @@ const productController = {
                 }
               }            
         })
-        res.render('products/list', { productList })
+        console.log(productList)
+         
+       
+        return res.render('products/list', { productList })
+        
 
     }, 
     novedades: async(req, res) => {
