@@ -35,7 +35,15 @@
                                 <a href="/">Home</a>
                                 <a href="/products/destacados">Destacados</a>
                                 <a href="/products/novedades">Novedades</a>
-                                <a href="/products/list/">Productos</a>
+                                <a href="" data-toggle="collapse" data-target="#demo">Productos <i class="fas fa-arrow-down"></i></a>
+                                <div id="demo" class="collapse">
+                                    <a href="/products/list/">Listado de Productos</a>
+                                    <% if(locals.user){ %> 
+                                        <a href="/products/createProduct">Crear Producto</a>
+                                    <% } %>
+                                </div>
+                                
+                                
                                 <a href="" data-toggle="collapse" data-target="#demo">Usuarios <i class="fas fa-arrow-down"></i></a>   
                                 <div id="demo" class="collapse">
                                     <a href="/users/login">Login</a>
