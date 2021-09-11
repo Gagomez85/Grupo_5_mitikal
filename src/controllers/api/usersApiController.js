@@ -3,7 +3,14 @@ const { User } = require('../../database/models')
 module.exports = {
     async listUsers(req, res) {
         try {
-            const users = await User.findAndCountAll()
+            const users = await User.findAndCountAll({
+                attributes: ["id","name", "email"]
+            })
+            var userlist = users.rows.map(function(user){
+                user.setDataValue("Detalle","http://127.0.0.1:3050/api/users/"+user.id)
+                return user
+ 
+            })
 
             res.status(200).json({
                 meta: {
@@ -11,7 +18,8 @@ module.exports = {
                     total: users.count
                 },
                 data: {
-                    users: users.rows
+                    users: 
+                        userlist,
                 }
             })
         } catch(err) {
@@ -38,13 +46,22 @@ module.exports = {
             })
             return
         }
+        
+        
+        const newUser =  {
+            id: user.id,
+            name: user.name,
+            image: "http://127.0.0.1:3050"+user.image
+        }
+        
+
 
         res.status(200).json({
             meta: {
                 status: "success",
             },
             data: {
-                user,
+                newUser,
             }
         })
     },
