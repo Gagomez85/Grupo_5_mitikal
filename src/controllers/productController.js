@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator')
 const fs = require('fs')
 const productsModel = require('../models/productsModel')
 const { Product } = require('../database/models')
+const { Category } = require('../database/models')
 const { Op } = require('sequelize')
 const path = require('path')
 
@@ -11,13 +12,21 @@ const productController = {
 
     list: async(req, res) => {
 
+        const categoryList = await Category.findAll({
+            order: [
+                ['name', 'ASC']
+            ],
+        })
+
         const productList = await Product.findAll({
             order: [
                 ['name', 'ASC']
             ],
         })
 
-        res.render('products/list', { productList })
+
+
+        res.render('products/list', { productList, categoryList })
 
     },
 
@@ -129,7 +138,7 @@ const productController = {
 
 
         // Crear el objeto producto
-        const { name, description, category, color, size, price } = req.body;
+        const { name, description, category_id, color, size, price } = req.body;
 
         // dentro de req.file va a venir la información del archivo
         const { file } = req
@@ -140,7 +149,7 @@ const productController = {
         const newProduct = {
             name: name,
             description: description,
-            category: category,
+            category: category_id,
             color: color,
             size: size,
             price: price,
@@ -154,18 +163,23 @@ const productController = {
         res.redirect('products/detailProduct' + productCreated.id);
     },
 
-    editProduct: (req, res) => {
+    editProduct: async (req, res) => {
         console.log(req.params.id);
         const { id } = req.params
-            /*        const product = Product.findByPk(id);
-             */
-        Product.findByPk(id)
-            .then(productDetail => {
 
-                res.render('products/updateProduct', {
-                    productDetail
-                });
-            })
+        const categories = await Category.findAll()
+        const productDetail = await Product.findByPk(id, {
+            include: [{
+                association: 'category',
+            }]
+            /* include: ['galaxy'] */
+        })
+        console.log(productDetail)
+
+        res.render('products/updateProduct', {
+                    productDetail,
+                    categories
+            });
 
 
     },

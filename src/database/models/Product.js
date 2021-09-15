@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         description: {
             type: DataTypes.STRING,
-        },
+        },/*
         category: {
             type: DataTypes.STRING(200),
-        },
+        },*/
         color: {
             type: DataTypes.STRING,
         },
@@ -33,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         novedades: {
             type: DataTypes.BOOLEAN,
+        },
+        category_id: {
+            type: DataTypes.INTEGER,
         }
     }
     const config = {
@@ -43,5 +46,12 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     const ProductModel = sequelize.define(alias, columns, config);
+    ProductModel.associate = models => {
+        ProductModel.belongsTo(models.Category, {
+            as: 'category',
+            foreignKey: 'id'
+        });
+    }
+
     return ProductModel;
 }

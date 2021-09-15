@@ -59,6 +59,24 @@
                         <input type="file" name="image" id="image" accept=".jpg , .png" multiple hidden/>
                     </div>
 
+
+
+
+
+                    <div class="input-container">
+                        <label for="category">Seleccione la category a la que pertenece</label>
+                        <select name="category" id="category" style="width: 100%;">
+                            <option value=""><%= productDetail.category && productDetail.category.name %></option>
+                            <% categories.forEach(category => { %>
+                             
+                                <option value="<%= category.id %>"><%= category.name %></option>
+                            <% }) %>
+                        </select>
+
+                        <span class='msg-error msg-error-category'></span>
+                    </div>
+    
+
                     <button class="updateproduct" type="submit">Actualizar Producto</button>
 
                 </form>
