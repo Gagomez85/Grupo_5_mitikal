@@ -3,7 +3,15 @@ const { Product } = require('../../database/models')
 module.exports = {
     async listProducts(req, res) {
         try {
-            const products = await Product.findAndCountAll()
+            const products = await Product.findAndCountAll({
+                attributes: ["id","name", "description"]
+            })
+
+            var productlist = products.rows.map(function(product){
+                product.setDataValue("Detalle","http://127.0.0.1:3050/api/products/"+product.id)
+                return product
+ 
+            })
 
             res.status(200).json({
                 meta: {
@@ -11,7 +19,8 @@ module.exports = {
                     total: products.count
                 },
                 data: {
-                    products: products.rows
+                    products: 
+                        productlist,
                 }
             })
         } catch(err) {
@@ -38,13 +47,19 @@ module.exports = {
             })
             return
         }
+        
+        const NewProduct =  {
+            id: product.id,
+            name: product.name,
+            image: "http://127.0.0.1:3050"+product.image
+        }
 
         res.status(200).json({
             meta: {
                 status: "success",
             },
             data: {
-                product,
+                NewProduct,
             }
         })
     },
