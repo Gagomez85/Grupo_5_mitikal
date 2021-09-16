@@ -64,12 +64,11 @@
 
 
                     <div class="input-container">
-                        <label for="category">Seleccione la category a la que pertenece</label>
+                        <label for="category">Seleccione la categoria a la que pertenece</label>
                         <select name="category" id="category" style="width: 100%;">
-                            <option value=""><%= productDetail.category && productDetail.category.name %></option>
                             <% categories.forEach(category => { %>
-                             
-                                <option value="<%= category.id %>"><%= category.name %></option>
+                                <option value="<%= category.id %>" <%= productDetail.category_id === category.id ? "selected": "" %>><%= category.name %></option>
+    
                             <% }) %>
                         </select>
 
