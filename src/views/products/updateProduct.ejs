@@ -38,8 +38,15 @@
                         <input type="text" name="description" id="description" required value="<%= productDetail.description %>" />
                     </div>
                     <div class="input-container">
-                        <label for="category">Categoria</label>
-                        <input type="text" name="category" id="category" required value="<%= productDetail.category %>" />
+                        <label for="category">Seleccione la categoria a la que pertenece</label>
+                        <select name="category" id="category" style="width: 100%;">
+                            <% categories.forEach(category => { %>
+                                <option value="<%= category.id %>" <%= productDetail.category_id === category.id ? "selected": "" %>><%= category.name %></option>
+    
+                            <% }) %>
+                        </select>
+
+                        <span class='msg-error msg-error-category'></span>
                     </div>
                     <div class="input-container">
                         <label for="color">Color</label>
@@ -63,17 +70,7 @@
 
 
 
-                    <div class="input-container">
-                        <label for="category">Seleccione la categoria a la que pertenece</label>
-                        <select name="category" id="category" style="width: 100%;">
-                            <% categories.forEach(category => { %>
-                                <option value="<%= category.id %>" <%= productDetail.category_id === category.id ? "selected": "" %>><%= category.name %></option>
-    
-                            <% }) %>
-                        </select>
 
-                        <span class='msg-error msg-error-category'></span>
-                    </div>
     
 
                     <button class="updateproduct" type="submit">Actualizar Producto</button>

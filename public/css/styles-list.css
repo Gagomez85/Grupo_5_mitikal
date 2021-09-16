@@ -1,6 +1,9 @@
 /* ---- main ---------------------------------------------------------------------------------------------------------------      */
 body{
     background: #f5f6fa !important;
+    width: auto;
+    height: auto;
+    position: relative;
 }
 .container-main-all{
     font-family: 'Anton', sans-serif ; 
