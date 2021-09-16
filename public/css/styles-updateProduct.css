@@ -67,7 +67,16 @@ main .input-container-image label
   
 }
 
+main .input-container-image{
+    padding: 5px;
+    text-align: center;
+}
 
+main .input-container-image img{
+    padding: 5px;
+    margin-top: 8px;
+    
+}
 
 
 
