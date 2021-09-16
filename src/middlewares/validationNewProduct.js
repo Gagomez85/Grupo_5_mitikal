@@ -18,11 +18,10 @@ const validationNewProduct = [
     .isLength({ min: 3 })
     .withMessage('Por favor descripcion'),
 
-    body('category')
+    body('category_id')
     .notEmpty()
     .withMessage('Por favor ingrese categoria')
     .bail()
-    .isLength({ min: 3 })
     .withMessage('Por favor ingrese categoria'),
     
     body('color')

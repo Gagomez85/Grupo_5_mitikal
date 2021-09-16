@@ -118,5 +118,45 @@
     "price": "1200",
     "image": "/img/1630614938949.jpg",
     "id": 14
+  },
+  {
+    "name": "Producto1",
+    "description": "Producto de verano",
+    "category": "1",
+    "color": "verde",
+    "size": "grande",
+    "price": "345",
+    "image": "/img/1631757592781.png",
+    "id": 15
+  },
+  {
+    "name": "Producto1",
+    "description": "Producto de verano",
+    "category_id": "1",
+    "color": "verde",
+    "size": "grande",
+    "price": "345",
+    "image": "/img/1631758088891.PNG",
+    "id": 16
+  },
+  {
+    "name": "Producto1",
+    "description": "Producto de verano",
+    "category_id": "1",
+    "color": "verde",
+    "size": "grande",
+    "price": "345",
+    "image": "/img/1631758246256.jpg",
+    "id": 17
+  },
+  {
+    "name": "Producto1",
+    "description": "Producto de verano",
+    "category_id": "3",
+    "color": "verde",
+    "size": "xxx",
+    "price": "468",
+    "image": "/img/1631758389990.png",
+    "id": 18
   }
 ]

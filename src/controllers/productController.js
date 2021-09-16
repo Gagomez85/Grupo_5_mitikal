@@ -111,16 +111,22 @@ const productController = {
             })
     },
 
-    createProduct: (req, res) => {
-        return res.render('./products/createProduct')
+    createProduct: async (req, res) => {
+        const categories = await Category.findAll()
+
+        return res.render('./products/createProduct', {
+                    categories
+            })
     },
 
-    storeProduct: (req, res) => {
+    storeProduct: async (req, res) => {
         const formValidation = validationResult(req)
+
+        const categories = await Category.findAll()
 
         /* si encuentro un error devuelvo el formulario
         con los valores ya cargados y los errores */
-        console.log('formValidation.mapped()', formValidation.mapped())
+        /*console.log('formValidation.mapped()', formValidation.mapped())*/
 
         if (!formValidation.isEmpty()) {
             // borrar imagen
@@ -132,7 +138,11 @@ const productController = {
 
             // tenemos errores
             const oldValues = req.body
-            res.render('products/createProduct', { oldValues, errors: formValidation.mapped() })
+            res.render('products/createProduct', { 
+                categories,
+                oldValues, 
+                errors: formValidation.mapped() 
+            })
             return
         }
 
@@ -149,18 +159,19 @@ const productController = {
         const newProduct = {
             name: name,
             description: description,
-            category: category_id,
+            category_id: category_id,
             color: color,
             size: size,
             price: price,
             image: '/img/' + image,
         }
 
-        const productCreated = productsModel.create(newProduct);
 
-        /*redireccionamiento*/
+        Product.create(newProduct)
+            .then((productCreated) => {
+                res.redirect('./detailProduct/'  + productCreated.id);
+            })
 
-        res.redirect('products/detailProduct' + productCreated.id);
     },
 
     editProduct: async (req, res) => {
@@ -185,6 +196,7 @@ const productController = {
     },
     update: async(req, res) => {
         const data = req.body;
+        console.log(data);
         const { id } = req.params;
         // el producto original
         const productoOriginal = await Product.findByPk(id)

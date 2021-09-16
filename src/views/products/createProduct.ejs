@@ -52,14 +52,15 @@
                     <div class="input-container">
                         <label for="category">Categoria</label>
                         
-                        <input type="text" name="category" id="category" class="<%= (locals.errors && errors.category) ? 'input-error' : '' %>" value="<%= locals.oldValues && oldValues.category %>" />
-                        <% if (locals.errors && errors.category) { %>
-                            <p class='msg-error'>
-                                <%= errors.category.msg %>
-                            </p>
-                            <% } %>
+                        <select name="category_id" id="category_id" style="width: 100%;">
+                            <% categories.forEach(category => { %>
+                            
+                                <option value="<%= category.id %>"><%= category.name %></option>
+
+                            <% }) %>
+                        </select>
                         
-                            <span id='error-category' class='msg-error msg-error-category'></span> 
+                        <span id='error-category' class='msg-error msg-error-category'></span> 
                     </div>
                     <div class="input-container">
                         <label for="color">Color</label>
