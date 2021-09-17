@@ -4,6 +4,7 @@ const productsApiController = require('../../controllers/api/productsApiControll
 
 // endpoints
 productsApiRoutes.get('/', productsApiController.listProducts)
+productsApiRoutes.get('/listProductsAll', productsApiController.listProductsAll)
 productsApiRoutes.get('/:id', productsApiController.detailProduct)
 productsApiRoutes.post('/', productsApiController.createProduct)
 productsApiRoutes.put('/:id', productsApiController.updateProduct)
