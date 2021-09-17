@@ -7,6 +7,7 @@ const userModel = require('../models/userModel') //
 
 const { User } = require('../database/models')
 const { Op } = require('sequelize')
+
 const { maxAgeUserCookie } = require('../config/config')
 
 
