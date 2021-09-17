@@ -4,11 +4,16 @@ module.exports = {
     async listProducts(req, res) {
         try {
             const products = await Product.findAndCountAll({
-                attributes: ["id","name", "description"]
+                attributes: ["id","name", "description","image"]
             })
 
             var productlist = products.rows.map(function(product){
                 product.setDataValue("Detalle","http://127.0.0.1:3050/api/products/"+product.id)
+                return product
+ 
+            })
+            var productlist = products.rows.map(function(product){
+                product.setDataValue("image","http://127.0.0.1:3050"+product.image)
                 return product
  
             })
