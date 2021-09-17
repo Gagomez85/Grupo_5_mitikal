@@ -15,3 +15,8 @@ HAcer mas: reuniones, colerning, y PRACTICAR, PRACTICAR, PRACTICAR y PRACITCAR
 Empezar a hacer: ya a full  mejorar el Front con mejores imagenes y meter un poco de Boostrap.
 Dejar de Hacer: ya no dedicarnos tanto a la funcionalidad que quedo ok, y emepzar a optimizar con React.
 Seguir haciendo: reuniones, reuniones, charlas, opiniones, el trabajo en equipo mejoro nuestro proyecto.
+
+Empezar a hacer: PRACTICAR A FULL, RELEER TODOS LOS DOCUMENTOS DE DH
+Dejar de hacer: NO QUEDARNOS MUCHO TIEMPO SIN PRACTICAR Y AMPLIAR NUESTROS CONOCIMIENTOS.
+Seguir haciendo: TRABAJO EN EQUIPO, PRACTICAR PRACTICAR Y PRACTICAR.
+

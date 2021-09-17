@@ -14,3 +14,6 @@
 14-Mejoramos por consejo de Pol las fotos subidas al proyecto.
 15-Creamos el css con boostrap del menu desplegable.
 16- Reunion para mejorar a React para la ultima parte
+17- Aplicamos todo React a nuestro Dashboard.
+18- Aplicamos Apis para alimentar nuestro React.
+19- Mejoramos el proyecto con los detalles que surgieron en el Sprin 7.
