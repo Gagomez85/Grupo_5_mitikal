@@ -35,7 +35,7 @@ const validationNewProduct = [
     .notEmpty()
     .withMessage('Por favor ingrese un size')
     .bail()
-    .isLength({ min: 3 })
+    .isLength({ min: 1 })
     .withMessage('Por favor ingrese un size'),
 
     body('price')
