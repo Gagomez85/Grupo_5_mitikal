@@ -4,5 +4,6 @@ const categoryApiController = require('../../controllers/api/categoryApiControll
 
 // endpoints
 categoryApiRoutes.get('/', categoryApiController.listCategory)
+categoryApiRoutes.get('/listCategoryTotal', categoryApiController.listCategoryTotal)
 
 module.exports = categoryApiRoutes

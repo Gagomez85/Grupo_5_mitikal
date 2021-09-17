@@ -18,9 +18,10 @@ module.exports = {
                 { where: {'category_id': 1}
             })
             var categoryList = category.rows.map(function(category){
-                category.setDataValue("Total", {prueba}
+                category.setDataValue("Total", prueba
                 )
             })
+            console.log(categoryList)
 
             res.status(200).json({
                 meta: {
@@ -32,6 +33,45 @@ module.exports = {
                         category,
                 }
             })
+
+        } catch(err) {
+            res.status(500).json({
+                meta: {
+                    status: "error"
+                },
+                error: {
+                    msg: "Cant connect to database",
+                    err
+                }
+            })
+        }
+    },
+
+    async listCategoryTotal(req, res) {
+        try {
+            const category = await Category.findAll({
+                include: ['products']
+            })
+
+            category.map(function(category){
+                category.setDataValue("Total", category.products.length)
+            })
+
+            const categoryListTotal =  {
+                id: category.id,
+                name: category.name,
+                Total: category.Total
+            }
+          
+            res.status(200).json({
+                meta: {
+                    status: "success",
+                },
+                data: {
+                    category,
+                }
+            })
+
         } catch(err) {
             res.status(500).json({
                 meta: {
